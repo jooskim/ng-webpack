@@ -2,3 +2,4 @@
 typings/
 build-dev/
 node_modules/
+tsc-results/
