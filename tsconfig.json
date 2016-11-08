@@ -14,7 +14,6 @@
   "filesGlob": [
     "./src/**/*.ts",
     "!./src/**/*.spec.ts",
-    "./typings/index.d.ts",
     "!./node_modules/**/*.ts"
   ],
   "exclude": [
@@ -30,9 +29,7 @@
     "./src/app/app.component.ts",
     "./src/app/app.module.ts",
     "./src/app/environment.ts",
-    "./src/custom-typings.d.ts",
     "./src/main.ts",
-    "./src/vendor.ts",
-    "./typings/index.d.ts"
+    "./src/vendor.ts"
   ]
 }

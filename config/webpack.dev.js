@@ -10,13 +10,27 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = (CopyWebpackPlugin = require('copy-webpack-plugin'), CopyWebpackPlugin.default || CopyWebpackPlugin);
 const webpackMerge = require('webpack-merge');
+const StringReplacePlugin = require('string-replace-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 
 const METADATA = webpackMerge(commonConfigs.metadata, {
     host: 'localhost',
     port: 3000,
+    baseUrl: '/',
     ENV: ENV
+});
+
+commonConfigs.module.loaders.splice(0, 0, {
+    test: /environment\.ts$/,
+    loader: StringReplacePlugin.replace({
+        replacements: [{
+            pattern: /production\:.*/,
+            replacement: function(match, pl, offset, string) {
+                return 'production: false';
+            }
+        }]
+    })
 });
 
 module.exports = webpackMerge(commonConfigs, {
@@ -34,10 +48,8 @@ module.exports = webpackMerge(commonConfigs, {
         }),
         new ForkCheckerPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(true),
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: 'commons',
-        //     filename: 'commons.js'
-        // }),
+        // new webpack.optimize.CommonsChunkPlugin('init.js'),
+        new StringReplacePlugin(),
         new ExtractTextPlugin('assets/[name].css'),
         new CopyWebpackPlugin([{
             from: 'src/assets/',

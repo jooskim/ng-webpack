@@ -9,7 +9,7 @@ require('assets/app.scss');
 
 @Component({
     selector: 'my-app',
-    templateUrl: 'assets/templates/myapp.html'
+    template: require('assets/templates/myapp.html')
 })
 
 export class AppComponent {
