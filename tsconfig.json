@@ -11,6 +11,9 @@
     "suppressImplicitAnyIndexErrors": true,
     "outDir": "./tsc-results"
   },
+  "awesomeTypescriptLoaderOptions": {
+    "useWebpackText": true
+  },
   "filesGlob": [
     "./src/**/*.ts",
     "!./src/**/*.spec.ts",
@@ -18,9 +21,7 @@
   ],
   "exclude": [
     "node_modules",
-    "dist",
-    "typings/main",
-    "typings/main.d.ts"
+    "dist"
   ],
   "atom": {
     "rewriteTsconfig": true
@@ -30,7 +31,8 @@
     "./src/app/app.component.ts",
     "./src/app/app.module.ts",
     "./src/app/environment.ts",
-    "./src/app/mod1/mod1.component.ts",
+    "./src/app/testone/testone.component.ts",
+    "./src/app/testone/testone.service.ts",
     "./src/custom-typings.d.ts",
     "./src/main.ts",
     "./src/vendor.ts"

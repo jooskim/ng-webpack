@@ -1,35 +1,33 @@
 /* tslint:disable:no-unused-variable */
 
-import { async, TestBed } from '@angular/core/testing';
+import { async, TestBed, ComponentFixture } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component.ts';
-import { ModuleOneComponent } from './mod1/mod1.component.ts';
+import { AppComponent } from './app.component';
+import { TestOneComponent } from './testone/testone.component';
 
 describe('App: First app', () => {
-    let fixture;
+    let fixture: ComponentFixture<AppComponent>;
+    let appInstance: AppComponent;
+
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [
-              AppComponent,
-              ModuleOneComponent
-            ],
             imports: [
               FormsModule,
               AppRoutingModule
+            ],
+            declarations: [
+              AppComponent,
+              TestOneComponent
             ]
         }).compileComponents();
     }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(AppComponent);
-        /* do necessary data binding. something like:
-           let appComp = fixture.componentInstance;
-           let appComp.debugElement.query(By.css('.hero'));
-           appComp.someAttribute = someInstance;
-        */
         fixture.detectChanges();
-
+        appInstance = fixture.componentInstance;
     });
 
     it('should create the app', () => {

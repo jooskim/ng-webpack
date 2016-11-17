@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ModuleOneComponent } from './mod1/mod1.component';
+import { TestOneComponent } from './testone/testone.component';
 
 const appRoutes: Routes = [
   {
-    path: 'mod1',
-    component: ModuleOneComponent
+    path: 'testone',
+    component: TestOneComponent
   },{
     path: '',
-    redirectTo: 'mod1',
+    redirectTo: 'testone',
     pathMatch: 'full'
   }
 ];

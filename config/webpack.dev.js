@@ -1,6 +1,3 @@
-/**
- * Created by jooskim on 8/4/16.
- */
 const webpack = require('webpack');
 const helpers = require('./helpers');
 const commonConfigs = require('./webpack.common.js');

@@ -1,15 +1,11 @@
-/**
- * Created by jooskim on 8/4/16.
- */
-'use strict';
-
 import { Component } from '@angular/core';
-
-require('assets/app.scss');
 
 @Component({
     selector: 'my-app',
-    template: require('assets/templates/myapp.html')
+    styleUrls: ['../assets/app.scss'],
+    template: `
+    <router-outlet></router-outlet>
+    `
 })
 
 export class AppComponent {

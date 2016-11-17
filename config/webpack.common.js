@@ -1,6 +1,3 @@
-/**
- * Created by jooskim on 8/4/16.
- */
 const webpack = require('webpack');
 const helpers = require('./helpers');
 
@@ -24,10 +21,6 @@ module.exports = {
         root: helpers.root("src"),
         moduleDirectories: ["node_modules"]
     },
-    // externals: {
-    //     "jquery": "jQuery",
-    //     "$": "$"
-    // },
     module: {
         preLoaders: [
             {
@@ -43,8 +36,7 @@ module.exports = {
         loaders: [
             {
                 test: /\.ts$/,
-                loader: 'awesome-typescript-loader!tslint'
-                // exclude: [/\.(spec|e2e)\.ts$/]
+                loaders: ['awesome-typescript-loader', 'angular2-template-loader', 'tslint']
             },
             {
                 test: /\.json$/,
@@ -52,7 +44,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style')
+                loader: 'raw-loader'
             },
             {
                 test: /\.html$/,
@@ -61,7 +53,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract('style', 'css!sass')
+                loaders: ['raw-loader', 'sass']
             }
         ]
     },

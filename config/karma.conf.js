@@ -1,6 +1,3 @@
-// Karma configuration file, see link for more information
-// https://karma-runner.github.io/0.13/config/configuration-file.html
-
 var webpackConfig = require('./webpack.test.js');
 
 module.exports = function (config) {
@@ -30,7 +27,7 @@ module.exports = function (config) {
         },
         webpack: webpackConfig,
         webpackMiddleware: {
-            noInfo: true
+            stats: 'errors-only'
         },
         reporters: ['progress', 'coverage'],
         port: 9876,
@@ -43,6 +40,7 @@ module.exports = function (config) {
             dir: 'coverage',
             reporters: [
                 {type: 'html'},
+                {type: 'json', subdir: '.', file: 'coverage.json'},
                 {type: 'text-summary'}
             ]
         }

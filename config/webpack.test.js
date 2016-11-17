@@ -9,11 +9,7 @@ module.exports = {
         loaders: [
             {
                 test: /\.ts$/,
-                loader: 'awesome-typescript-loader',
-                query: {
-                    sourceMap: false,
-                    inlineSourceMap: true
-                }
+                loaders: ['awesome-typescript-loader?sourceMap=false&inlineSourceMap=true', 'angular2-template-loader']
             },
             {test: /\.json$/, loader: 'json-loader'},
             {test: /\.html$/, loader: 'html-loader'},
@@ -22,13 +18,10 @@ module.exports = {
         postLoaders: [
             {
                 test: /\.ts$/,
-                loader: 'istanbul-instrumenter-loader',
+                loader: 'istanbul-instrumenter',
                 exclude: [
                     'node_modules',
                     /karma-entry\.ts$/,
-                    /app\.component\.ts$/,
-                    /environment\.ts$/,
-                    /app\.module\.ts$/,
                     /\.(e2e|spec)\.ts$/
                 ]
             }
