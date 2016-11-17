@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import 'rxjs/add/operator/switchMap';
+
 import { TestOneService } from './testone.service';
 
 @Component({
@@ -7,8 +10,16 @@ import { TestOneService } from './testone.service';
     test one component
     `
 })
-export class TestOneComponent {
-    constructor(private svc: TestOneService) {
-        console.log('hi');
+
+export class TestOneComponent implements OnInit {
+    private svc: TestOneService;
+
+    constructor(svc: TestOneService) {
+        this.svc = svc;
     }
+
+    ngOnInit() {
+        console.log('service is here', this.svc);
+    }
+
 }
