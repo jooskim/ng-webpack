@@ -26,9 +26,12 @@
     "rewriteTsconfig": true
   },
   "files": [
+    "./src/app/app-routing.module.ts",
     "./src/app/app.component.ts",
     "./src/app/app.module.ts",
     "./src/app/environment.ts",
+    "./src/app/mod1/mod1.component.ts",
+    "./src/custom-typings.d.ts",
     "./src/main.ts",
     "./src/vendor.ts"
   ]

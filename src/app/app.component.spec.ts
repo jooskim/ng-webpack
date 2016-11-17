@@ -1,18 +1,23 @@
 /* tslint:disable:no-unused-variable */
 
 import { async, TestBed } from '@angular/core/testing';
-import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 import { FormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component.ts';
-
-TestBed.initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting());
+import { ModuleOneComponent } from './mod1/mod1.component.ts';
 
 describe('App: First app', () => {
     let fixture;
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [AppComponent],
-            imports: [FormsModule]
+            declarations: [
+              AppComponent,
+              ModuleOneComponent
+            ],
+            imports: [
+              FormsModule,
+              AppRoutingModule
+            ]
         }).compileComponents();
     }));
 
@@ -23,8 +28,8 @@ describe('App: First app', () => {
            let appComp.debugElement.query(By.css('.hero'));
            appComp.someAttribute = someInstance;
         */
-         fixture.detectChanges();
-        
+        fixture.detectChanges();
+
     });
 
     it('should create the app', () => {

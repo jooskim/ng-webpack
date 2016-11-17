@@ -23,14 +23,10 @@ module.exports = function (config) {
             }
         },
         files: [
-            'config/karma-entry.ts',
-            'src/**/*.spec.ts',
-            'src/app/**/!(app.component|app.module|environment)\.ts'
+            'config/karma-entry.ts'
         ],
         preprocessors: {
-            'config/karma-entry.ts': ['webpack'],
-            'src/**/*.spec.ts': ['webpack'],
-            'src/app/**/!(app.component|app.module|envionment)\.ts': ['webpack']
+            'config/karma-entry.ts': ['webpack']
         },
         webpack: webpackConfig,
         webpackMiddleware: {
