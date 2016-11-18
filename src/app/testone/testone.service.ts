@@ -17,9 +17,14 @@ export class TestOneService {
         return this.data$.getValue();
     }
 
-    tick(): Observable<string> {
-        this.data$.next('abcde');
-        return this.data$.asObservable();
+    static tick(): Observable<string> {
+        return Observable
+            .interval(1000)
+            .take(5)
+            .map((v) => '' + v * 2);
+
+        // this.data$.next('abcde');
+        // return this.data$.asObservable();
     }
 
     returnTrue(): boolean {
