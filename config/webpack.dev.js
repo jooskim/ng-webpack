@@ -47,10 +47,10 @@ module.exports = webpackMerge(commonConfigs, {
         new webpack.optimize.OccurrenceOrderPlugin(true),
         // new webpack.optimize.CommonsChunkPlugin('init.js'),
         new StringReplacePlugin(),
-        new ExtractTextPlugin('assets/[name].css'),
+        new ExtractTextPlugin('clarity-ui-min.css'),
         new CopyWebpackPlugin([{
-            from: 'src/assets/',
-            to: 'assets'
+            from: 'src/**/*.css',
+            to: './'
         }], {
             ignore: ['*.scss', 'index.html']
         }),

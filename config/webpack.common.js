@@ -28,15 +28,29 @@ module.exports = {
                 loader: 'source-map-loader',
                 exclude: [
                     helpers.root('node_modules/rxjs'),
-                    helpers.root('node_modules/@angular')
+                    helpers.root('node_modules/@angular'),
+					helpers.root('node_modules/mutationobserver-shim/dist'),
+					helpers.root('node_modules/clarity-icons')
                 ]
 
-            }
+            },
+			{
+			    test: /\.ts$/,
+				loader: 'tslint',
+				exclude: [
+				    helpers.root('node_modules/clarity-ui'),
+					helpers.root('node_modules/clarity-icons')
+			    ]
+			}
         ],
+		noParse: [
+		    helpers.root('node_modules/clarity-ui'),
+			helpers.root('node_modules/clarity-icons')
+		],
         loaders: [
             {
                 test: /\.ts$/,
-                loaders: ['awesome-typescript-loader', 'angular2-template-loader', 'tslint']
+                loaders: ['awesome-typescript-loader', 'angular2-template-loader']
             },
             {
                 test: /\.json$/,
@@ -44,7 +58,10 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: 'raw-loader'
+                loader: 'raw-loader',
+				exclude: [
+				    /clarity-ui\.min\.css$/
+				]
             },
             {
                 test: /\.html$/,
@@ -53,8 +70,13 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loaders: ['raw-loader', 'sass']
-            }
+                loaders: ['raw-loader', 'sass'],
+				exclude: [/node_modules/]
+            },
+			{
+			    test: /clarity-ui\.min\.css$/,
+				loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+			}
         ]
     },
     plugins: [],

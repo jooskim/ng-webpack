@@ -3,6 +3,7 @@
  */
 declare var ENV: string;
 declare var HMR: boolean;
+declare var customElements: any;
 
 interface GlobalEnvironment {
     ENV;
