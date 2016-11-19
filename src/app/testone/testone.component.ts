@@ -32,6 +32,7 @@ export class TestOneComponent implements OnInit, AfterContentInit {
     }
 
     ngAfterContentInit() {
-        this.d = this.svc.tick();
+        //this.d = this.svc.tick();
+        this.d = TestOneService.tick();
     }
 }
