@@ -17,7 +17,7 @@ export class TestOneService {
         return this.data$.getValue();
     }
 
-    static tick(): Observable<string> {
+    tick(): Observable<string> {
         return Observable
             .interval(1000)
             .take(5)
