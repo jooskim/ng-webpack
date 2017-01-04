@@ -22,19 +22,5 @@
   "exclude": [
     "node_modules",
     "dist"
-  ],
-  "atom": {
-    "rewriteTsconfig": true
-  },
-  "files": [
-    "./src/app/app-routing.module.ts",
-    "./src/app/app.component.ts",
-    "./src/app/app.module.ts",
-    "./src/app/environment.ts",
-    "./src/app/testone/testone.component.ts",
-    "./src/app/testone/testone.service.ts",
-    "./src/custom-typings.d.ts",
-    "./src/main.ts",
-    "./src/vendor.ts"
   ]
 }
