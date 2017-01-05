@@ -1,19 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Http, Headers } from '@angular/http';
 import { Store } from '@ngrx/store';
 import { ObjectSpec } from '../models';
+import { ThreeSpec } from "../models/three";
+
+const db = 'http://localhost:3000/items';
+const defaultHeader = {
+    headers: new Headers({'Content-Type': 'application/json'})
+}
 
 @Injectable()
 export class CommonService {
-    private numberItems: Observable<Array<number>>;
-    private obj: Observable<ObjectSpec>;
 
     constructor(
-        private store: Store<number[]>
-    ) {
-        this.numberItems = this.store.select('test');
-        this.obj = this.store.select('object');
-    }
+        private http: Http,
+        private store: Store<{test: number[], obj: ObjectSpec, three: Array<ThreeSpec>}>
+    ) {}
 
     demoOne() {
         // this.numberItems.subscribe((v) => {
@@ -50,5 +53,30 @@ export class CommonService {
                 }
             });
         }, 2500);
+    }
+
+    demoThree() {
+        return this.http.get(db)
+            .map(res => res.json())
+            .map(payload => {
+                return {
+                    type: 'ADD_ALL',
+                    payload
+                }
+            })
+            .subscribe(payload => {
+                this.store.dispatch(payload);
+            });
+    }
+
+    demoFour() {
+        this.store.dispatch({
+            type: 'APPEND_ONE',
+            payload: <ThreeSpec>{
+                id: 2,
+                name: 'HaHa',
+                description: 'Testing'
+            }
+        });
     }
 }

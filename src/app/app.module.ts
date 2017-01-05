@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
 
-import { TestReducer, ObjectReducer } from './models';
+import { TestReducer, ObjectReducer, ThreeReducer } from './models';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +20,8 @@ import { CommonService } from './common/svc.service';
         HttpModule,
         StoreModule.provideStore({
             test: TestReducer,
-            object: ObjectReducer
+            object: ObjectReducer,
+            three: ThreeReducer
         })
     ],
     providers: [
