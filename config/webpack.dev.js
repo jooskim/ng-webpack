@@ -13,7 +13,7 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 
 const METADATA = webpackMerge(commonConfigs.metadata, {
     host: 'localhost',
-    port: 3000,
+    port: 3001,
     baseUrl: '/',
     ENV: ENV
 });
