@@ -1,24 +1,45 @@
+var path = require('path');
+var webpack = require('webpack');
+
 module.exports = {
     devtool: 'inline-source-map',
-    verbose: true,
+    context: path.resolve(__dirname, '../'),
+    entry: './config/karma-entry.ts',
     resolve: {
-        extensions: ['', '.ts', '.js', '.scss', '.html'],
-        modulesDirectories: ['node_modules', 'src']
+        extensions: ['.ts', '.js', '.scss', '.html'],
+        modules: ['node_modules', 'src']
     },
+    plugins: [
+        new webpack.ContextReplacementPlugin(
+            /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+            __dirname
+        )
+    ],
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.ts$/,
-                loaders: ['awesome-typescript-loader?sourceMap=false&inlineSourceMap=true', 'angular2-template-loader']
+                use: [
+                    'awesome-typescript-loader?sourceMap=false&inlineSourceMap=true',
+                    'angular2-template-loader'
+                ]
             },
-            {test: /\.json$/, loader: 'json-loader'},
-            {test: /\.html$/, loader: 'html-loader'},
-            {test: /\.scss$/, loaders: ['to-string-loader', 'css-loader', 'sass-loader']}
-        ],
-        postLoaders: [
+            {
+                test: /\.html$/,
+                loader: 'html-loader'
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    'to-string-loader',
+                    'css-loader',
+                    'sass-loader'
+                ]
+            },
             {
                 test: /\.ts$/,
-                loader: 'istanbul-instrumenter',
+                loader: 'istanbul-instrumenter-loader',
+                enforce: 'post',
                 exclude: [
                     'node_modules',
                     /karma-entry\.ts$/,
