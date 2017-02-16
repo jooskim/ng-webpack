@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const StringReplacePlugin = require('string-replace-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
+var ngToolsWebpack = require('@ngtools/webpack');
 
 module.exports = function(env) {
     var base = {
@@ -34,11 +35,9 @@ module.exports = function(env) {
                 },
                 {
                     test: /\.ts$/,
-                    use: [
-                        'tslint-loader',
-                        'angular2-template-loader',
-                        'awesome-typescript-loader'
-                    ]
+                    enforce: 'pre',
+                    loader: 'tslint-loader',
+                    exclude: [/node_modules/]
                 },
                 {
                     test: /\.css$/,
@@ -114,6 +113,24 @@ module.exports = function(env) {
             },
             outputPath: path.resolve(__dirname, 'build-dev')
         };
+        base.module.rules.push({
+            test: /\.ts$/,
+            use: [
+                'angular2-template-loader',
+                'awesome-typescript-loader'
+            ]
+        });
+    } else {
+        base.module.rules.push({
+            test: /\.ts$/,
+            use: ['@ngtools/webpack']
+        });
+        base.plugins.push(
+            new ngToolsWebpack.AotPlugin({
+                tsConfigPath: path.resolve(__dirname, '../tsconfig.json'),
+                entryModule: path.resolve(__dirname, '../src/app/app.module#AppModule')
+            })
+        )
     }
 
     return base;
