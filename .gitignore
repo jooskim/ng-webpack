@@ -1,5 +1,7 @@
 .idea/
 build-dev/
+dist/
+aot/
 node_modules/
 tsc-results/
 coverage/

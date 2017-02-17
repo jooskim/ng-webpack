@@ -5,8 +5,7 @@ export interface ThreeSpec {
     name: string;
     description: string;
 }
-
-export const ThreeReducer: ActionReducer<Array<ThreeSpec>> = (state: Array<ThreeSpec> = [], action: Action) => {
+export function reducerFunc(state: Array<ThreeSpec> = [], action: Action) {
     switch (action.type) {
         case 'ADD_ALL':
             return <Array<ThreeSpec>>action.payload;
@@ -16,4 +15,6 @@ export const ThreeReducer: ActionReducer<Array<ThreeSpec>> = (state: Array<Three
         default:
             return state;
     }
-};
+}
+
+export const ThreeReducer: ActionReducer<Array<ThreeSpec>> = reducerFunc;

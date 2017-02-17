@@ -5,8 +5,7 @@ export interface ObjectSpec {
     name: string;
     age: number;
 };
-
-export const ObjectReducer: ActionReducer<ObjectSpec> = (state: any = {}, action: Action) => {
+export function reducerFunc(state: any = {}, action: Action) {
     switch (action.type) {
         case 'ADD':
             return action.payload;
@@ -18,4 +17,6 @@ export const ObjectReducer: ActionReducer<ObjectSpec> = (state: any = {}, action
         default:
             return state;
     }
-};
+}
+
+export const ObjectReducer: ActionReducer<ObjectSpec> = reducerFunc;

@@ -1,20 +1,18 @@
 var path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const StringReplacePlugin = require('string-replace-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
-var ngToolsWebpack = require('@ngtools/webpack');
 
 module.exports = function(env) {
     var base = {
         context: path.resolve(__dirname, '../'),
-        devtool: env.is_prod ? 'source-map' : 'inline-source-map',
+        devtool: env.is_production ? 'source-map' : 'inline-source-map',
         entry: {
             'vendor': './src/vendor.ts',
-            'main': './src/main.ts'
+            'main': env.is_aot ? './src/main-aot.ts' : './src/main.ts'
         },
         output: {
-            path: env.is_prod ? './dist' : './build-dev',
+            path: env.is_production ? './dist' : './build-dev',
             filename: '[name].bundle.js',
             publicPath: '/'
         },
@@ -37,17 +35,9 @@ module.exports = function(env) {
                     test: /\.ts$/,
                     enforce: 'pre',
                     loader: 'tslint-loader',
-                    exclude: [/node_modules/]
-                },
-                {
-                    test: /\.css$/,
-                    loader: 'raw-loader'
-                },
-                {
-                    test: /\.html$/,
-                    loader: 'raw-loader',
                     exclude: [
-                        path.resolve(__dirname, 'src/index.html')
+                        /node_modules/,
+                        /aot/
                     ]
                 },
                 {
@@ -55,6 +45,21 @@ module.exports = function(env) {
                     use: [
                         'raw-loader',
                         'sass-loader'
+                    ],
+                    exclude: [/node_modules/]
+                },
+                {
+                    test: /\.ts$/,
+                    use: [
+                        'awesome-typescript-loader',
+                        'angular2-template-loader'
+                    ]
+                },
+                {
+                    test: /\.html$/,
+                    loader: 'raw-loader',
+                    exclude: [
+                        path.resolve(__dirname, 'src/index.html')
                     ]
                 }
             ]
@@ -68,14 +73,9 @@ module.exports = function(env) {
                 template: 'src/index.html',
                 chunksSortMode: 'dependency'
             }),
-            new CopyWebpackPlugin([
-                {
-                    from: 'src/assets',
-                    to: 'assets'
-                }], {
-                    ignore: ['*.scss', 'index.html']
-                }
-            )
+            new webpack.optimize.CommonsChunkPlugin({
+                name: 'vendor'
+            })
         ],
         performance: {
             hints: false
@@ -90,7 +90,7 @@ module.exports = function(env) {
         loader: 'string-replace-loader',
         options: {
             search: /production\:.*/,
-            replace: env.is_prod ? 'production: true' : 'production: false'
+            replace: env.is_production ? 'production: true' : 'production: false'
         }
     },{
         test: /index\.html$/,
@@ -102,7 +102,21 @@ module.exports = function(env) {
         }
     });
 
-    if (!env.is_prod) {
+    if (env.is_production) {
+        base.devServer = {
+            port: 3001,
+            host: '0.0.0.0',
+            historyApiFallback: true,
+            watchOptions: {
+                aggregateTimeout: 300,
+                poll: 1000
+            },
+            outputPath: path.resolve(__dirname, 'dist')
+        };
+        base.plugins.splice(1, 0,
+            new webpack.optimize.UglifyJsPlugin()
+        );
+    } else {
         base.devServer = {
             port: 3001,
             host: '0.0.0.0',
@@ -113,24 +127,6 @@ module.exports = function(env) {
             },
             outputPath: path.resolve(__dirname, 'build-dev')
         };
-        base.module.rules.push({
-            test: /\.ts$/,
-            use: [
-                'angular2-template-loader',
-                'awesome-typescript-loader'
-            ]
-        });
-    } else {
-        base.module.rules.push({
-            test: /\.ts$/,
-            use: ['@ngtools/webpack']
-        });
-        base.plugins.push(
-            new ngToolsWebpack.AotPlugin({
-                tsConfigPath: path.resolve(__dirname, '../tsconfig.json'),
-                entryModule: path.resolve(__dirname, '../src/app/app.module#AppModule')
-            })
-        )
     }
 
     return base;

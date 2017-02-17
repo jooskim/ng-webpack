@@ -39,10 +39,10 @@ import {TestSpec} from "../models/test";
 
 export class TestOneComponent implements OnInit, AfterContentInit {
     private svc: TestOneService;
-    private d: Observable<string>;
-    private numberItems: Observable<TestSpec>;
-    private obj: Observable<ObjectSpec>;
-    private three: Observable<Array<ThreeSpec>>;
+    public d: Observable<string>;
+    public numberItems: Observable<TestSpec>;
+    public obj: Observable<ObjectSpec>;
+    public three: Observable<Array<ThreeSpec>>;
 
     constructor(
         svc: TestOneService,

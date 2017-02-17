@@ -4,7 +4,7 @@ export interface TestSpec {
     numbers: number[];
 };
 
-export const TestReducer: ActionReducer<number[]> = (state: number[] = [], action: Action) => {
+export function reducerFunc(state: number[] = [], action: Action) {
     switch (action.type) {
         case 'REPLACE':
             return action.payload;
@@ -13,4 +13,6 @@ export const TestReducer: ActionReducer<number[]> = (state: number[] = [], actio
         default:
             return state;
     }
-};
+}
+
+export const TestReducer: ActionReducer<number[]> = reducerFunc;
