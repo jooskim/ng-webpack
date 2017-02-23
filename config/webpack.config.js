@@ -1,6 +1,5 @@
 var path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const StringReplacePlugin = require('string-replace-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 
