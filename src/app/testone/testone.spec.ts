@@ -7,6 +7,10 @@ import { Observable, BehaviorSubject } from 'rxjs/Rx';
 
 import { TestOneService } from './testone.service';
 import { TestOneComponent } from './testone.component';
+import { CommonService } from '../common/svc.service';
+import { HttpModule } from '@angular/http';
+import { StoreModule } from '@ngrx/store';
+import { TestReducer, ObjectReducer, ThreeReducer } from '../models';
 
 describe('Test One Component', () => {
     let fixture: ComponentFixture<TestOneComponent>;
@@ -22,13 +26,20 @@ describe('Test One Component', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             providers: [
-                TestOneService
+                TestOneService,
+                CommonService
             ],
             declarations: [
                 TestOneComponent
             ],
             imports: [
-                FormsModule
+                FormsModule,
+                HttpModule,
+                StoreModule.provideStore({
+                    test: TestReducer,
+                    object: ObjectReducer,
+                    three: ThreeReducer
+                })
             ]
         }).compileComponents();
     }));
