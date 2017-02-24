@@ -1,4 +1,9 @@
+const path = require('path');
 var SpecReporter = require('jasmine-spec-reporter');
+
+require('ts-node').register({
+    project: 'e2e'
+});
 
 exports.config = {
     allScriptsTimeout: 11000,
@@ -6,9 +11,15 @@ exports.config = {
         'e2e/**/*.e2e-spec.ts'
     ],
     exclude: [],
-    capabilities: {
-        browserName: 'chrome'
-    },
+    multiCapabilities: [
+        {
+            browserName: 'firefox'
+        }
+        ,{
+            browserName: 'chrome'
+        }
+    ],
+    firefoxPath: path.resolve(__dirname, 'browsers/firefox/firefox'),
     directConnect: true,
     baseUrl: 'http://localhost:3001',
     framework: 'jasmine',
@@ -19,9 +30,6 @@ exports.config = {
     },
     useAllAngular2AppRoots: true,
     beforeLaunch: function() {
-        require('ts-node').register({
-            project: 'e2e'
-        });
     },
     onPrepare: function() {
         jasmine.getEnv().addReporter(new SpecReporter());
