@@ -2,7 +2,7 @@ import { browser, element, by, ElementFinder, ExpectedConditions } from 'protrac
 
 describe('my app', () => {
     beforeEach(() => {
-        browser.get('http://localhost:3001/');
+        browser.get('/');
     });
 
     it('should work', () => {
