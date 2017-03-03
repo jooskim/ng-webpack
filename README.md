@@ -1,4 +1,4 @@
-#Angular 2 Boilerplate with Webpack 2
+# Angular 2 Boilerplate with Webpack 2
 
-[![Build Status](http://45.79.73.167:8000/api/badges/jooskim/ng-webpack/status.svg)](http://45.79.73.167:8000/jooskim/ng-webpack)
+[![build status](https://gitlab.com/jooskim/ng-webpack/badges/master/build.svg)](https://gitlab.com/jooskim/ng-webpack/commits/master)
 
