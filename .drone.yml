@@ -2,6 +2,7 @@ pipeline:
   build:
     image: node:6.10
     commands:
-      - npm install
+      - echo testing..
+      - npm install --quiet
       - npm test
  
