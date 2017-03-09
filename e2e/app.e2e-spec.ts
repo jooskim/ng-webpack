@@ -2,6 +2,8 @@ import { browser, element, by, ElementFinder, ExpectedConditions } from 'protrac
 
 describe('my app', () => {
     beforeEach(() => {
+        browser.manage().window().setSize(1400, 900);
+        browser.manage().window().maximize();
         browser.get('/');
     });
 
