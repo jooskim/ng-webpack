@@ -11,9 +11,12 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
+cache:
+  apt: true
+  yarn: true
+  directories:
+    - node_modules
 branches:
   only:
     - master
-before_script:
-  - echo "start building"
 
