@@ -2,11 +2,11 @@
 # yarn lockfile v1
 
 
-"@angular/common@^2.4.7":
+"@angular/common@^2.4.9":
   version "2.4.9"
   resolved "https://registry.yarnpkg.com/@angular/common/-/common-2.4.9.tgz#3094f973e18330526256dcd13fcf27609b7abc08"
 
-"@angular/compiler-cli@^2.4.7":
+"@angular/compiler-cli@^2.4.9":
   version "2.4.9"
   resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-2.4.9.tgz#8ac4e28c12d2b09a10aabf9cb95c569844b90db3"
   dependencies:
@@ -14,37 +14,37 @@
     minimist "^1.2.0"
     reflect-metadata "^0.1.2"
 
-"@angular/compiler@^2.4.7":
+"@angular/compiler@^2.4.9":
   version "2.4.9"
   resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-2.4.9.tgz#ee159181c4013046598e1d176b45063bddb141f6"
 
-"@angular/core@^2.4.7":
+"@angular/core@^2.4.9":
   version "2.4.9"
   resolved "https://registry.yarnpkg.com/@angular/core/-/core-2.4.9.tgz#85dca2afa4021be91512c97597702ac8d73092e6"
 
-"@angular/forms@^2.4.7":
+"@angular/forms@^2.4.9":
   version "2.4.9"
   resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-2.4.9.tgz#a1ee9f403267fd78041f9ee77d1c9c24150e1d7c"
 
-"@angular/http@^2.4.7":
+"@angular/http@^2.4.9":
   version "2.4.9"
   resolved "https://registry.yarnpkg.com/@angular/http/-/http-2.4.9.tgz#a7de980d564ac25a497c5e822d2b941c1f143d48"
 
-"@angular/platform-browser-dynamic@^2.4.7":
+"@angular/platform-browser-dynamic@^2.4.9":
   version "2.4.9"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-2.4.9.tgz#353b92e8670065ab5b1b6baea3a96928b174ee09"
 
-"@angular/platform-browser@^2.4.7":
+"@angular/platform-browser@^2.4.9":
   version "2.4.9"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-2.4.9.tgz#936139a1e0d280394988473a8a11d922d768f89e"
 
-"@angular/platform-server@^2.4.7":
+"@angular/platform-server@^2.4.9":
   version "2.4.9"
   resolved "https://registry.yarnpkg.com/@angular/platform-server/-/platform-server-2.4.9.tgz#d3710cbd96d2b9f41f8800a6525c783628af8da3"
   dependencies:
     parse5 "^2.2.1"
 
-"@angular/router@~3.4.7":
+"@angular/router@~3.4.9":
   version "3.4.9"
   resolved "https://registry.yarnpkg.com/@angular/router/-/router-3.4.9.tgz#2525384124140fefae20bf661262b611f28ffc92"
 
@@ -54,7 +54,7 @@
   dependencies:
     tsickle "^0.2"
 
-"@angular/upgrade@^2.4.7":
+"@angular/upgrade@^2.4.9":
   version "2.4.9"
   resolved "https://registry.yarnpkg.com/@angular/upgrade/-/upgrade-2.4.9.tgz#931e1e8413d54cf921b2752cbcc2ce791b7a4966"
 
@@ -77,12 +77,6 @@
 "@types/node@^6.0.46":
   version "6.0.65"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.65.tgz#c00faa7ffcfc9842b5dd7bf650872562504d5670"
-
-"@types/protractor@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@types/protractor/-/protractor-4.0.0.tgz#11915845b38d483f7060d74ec8e2eeee43573999"
-  dependencies:
-    protractor "*"
 
 "@types/q@^0.0.32":
   version "0.0.32"
@@ -3915,7 +3909,7 @@ progress@~1.1.8:
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/progress/-/progress-1.1.8.tgz#e260c78f6161cdd9b0e56cc3e0a85de17c7a57be"
 
-protractor@*, protractor@^4.0.14:
+protractor@^4.0.14:
   version "4.0.14"
   resolved "https://registry.yarnpkg.com/protractor/-/protractor-4.0.14.tgz#efc4a877fac3a182a9dded26cd5869f4762fd172"
   dependencies:
