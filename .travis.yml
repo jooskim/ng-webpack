@@ -24,6 +24,8 @@ branches:
 before_install:
   - docker pull elgalu/selenium
   - docker run -d --name grid -p 4444:24444 -p 5900:25900 -e TZ="US/Central" --shm-size=1g elgalu/selenium
+before_script:
+  - nohup npm run server:dev > /dev/null &
 script:
   - npm test
   - npm run e2e
