@@ -9,8 +9,10 @@ addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
+      - google-chrome
     packages:
       - g++-4.8
+      - google-chrome-stable
 cache:
   apt: true
   yarn: true
@@ -19,4 +21,11 @@ cache:
 branches:
   only:
     - master
+before_script:
+  - npm install -g selenium-standalone
+  - xvfb-run --server-args="-screen 0, 1680x1050x24" selenium-standalone start > selenium.txt &
+  - sleep 5
+script:
+  - npm test
+  - npm run e2e
 
