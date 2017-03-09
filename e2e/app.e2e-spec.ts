@@ -11,12 +11,12 @@ describe('my app', () => {
         expect(browser.getTitle()).toBeTruthy();
     });
 
-    it('should find joosung kim', () => {
+    it('should find Name 2', () => {
         let js = element(by.css('ul'))
             .all(by.css('li'))
             .filter((li) => {
                 return li.getText().then((val) => {
-                    return val.indexOf('Joosung') > -1;
+                    return val.indexOf('Name 2') > -1;
                 });
             });
 
