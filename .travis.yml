@@ -2,8 +2,6 @@ language: node_js
 node_js:
   - "6"
 sudo: required
-services:
-  - docker
 dist: xenial
 env:
   - CXX=g++-4.8
@@ -11,8 +9,10 @@ addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
+      - google-chrome
     packages:
       - g++-4.8
+      - google-chrome-stable
 cache:
   apt: true
   yarn: true
@@ -22,8 +22,14 @@ branches:
   only:
     - master
 before_install:
-  - docker pull elgalu/selenium
-  - docker run -d --name grid -p 4444:24444 -p 5900:25900 -e TZ="US/Central" --shm-size=1g elgalu/selenium
+#  - docker pull elgalu/selenium
+#  - docker run -d --name grid -p 4444:24444 -p 5900:25900 -e TZ="US/Central" --shm-size=1g elgalu/selenium
+  - npm install -g selenium-standalone
+  - selenium-standalone install
+  - export DISPLAY=:99.0
+  - Xvfb -ac :99 -screen 0 1680x1050x16 &
+  - nohup selenium-standalone start > selenium.txt &
+  - sleep 5
 before_script:
   - nohup npm run server:dev > /dev/null &
 script:
