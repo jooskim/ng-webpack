@@ -12,14 +12,14 @@ exports.config = {
     ],
     exclude: [],
     multiCapabilities: [
-        {
-            browserName: 'firefox'
-        }
-        ,{
-            browserName: 'chrome'
+//        {
+//            browserName: 'firefox'
+//        }
+//        ,{
+           { browserName: 'chrome'
         }
     ],
-    firefoxPath: path.resolve(__dirname, 'browsers/firefox/firefox'),
+//    firefoxPath: path.resolve(__dirname, 'browsers/firefox/firefox'),
     directConnect: true,
     baseUrl: 'http://localhost:3001',
     framework: 'jasmine',
