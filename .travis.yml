@@ -6,7 +6,7 @@ dist: trusty
 env:
   - CXX=g++-4.8
 addons:
-  firefox: "47.0"
+  firefox: "47.0.2"
   apt:
     sources:
       - ubuntu-toolchain-r-test
@@ -29,14 +29,12 @@ before_install:
   - selenium-standalone install --version=2.53.1
   - export DISPLAY=:99.0
   - Xvfb -ac :99 -screen 0 1680x1050x16 &
-  - nohup selenium-standalone start -- -role hub -port 4441 &
-  - selenium-standalone start -- -role node -nodeConfig seleniumConfig/nodeConfig.json -hub http://localhost:4441/grid/register &
+  - nohup selenium-standalone start --version=2.53.1 -- -role hub -port 4441 &
   - sleep 5
+  - nohup selenium-standalone start --version=2.53.1 -- -role node -nodeConfig seleniumConfig/nodeConfig.json -hub http://localhost:4441/grid/register &
 before_script:
   - nohup npm run server:dev > /dev/null &
 script:
   - npm test
   - npm run e2e
-after_script:
-  - cat selenium.txt
 
