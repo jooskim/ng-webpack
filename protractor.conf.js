@@ -20,6 +20,7 @@ exports.config = {
         }
     ],
     seleniumAddress: 'http://localhost:4444/wd/hub',
+    maxSessions: 1,
     baseUrl: 'http://localhost:3001',
     framework: 'jasmine',
     jasmineNodeOpts: {
