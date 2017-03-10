@@ -6,7 +6,7 @@ dist: trusty
 env:
   - CXX=g++-4.8
 addons:
-  firefox: 47.0.2
+  firefox: "47.0"
   apt:
     sources:
       - ubuntu-toolchain-r-test
@@ -29,7 +29,7 @@ before_install:
   - selenium-standalone install
   - export DISPLAY=:99.0
   - Xvfb -ac :99 -screen 0 1680x1050x16 &
-  - nohup selenium-standalone start > selenium.txt &
+  - nohup selenium-standalone start &
   - sleep 5
 before_script:
   - nohup npm run server:dev > /dev/null &
